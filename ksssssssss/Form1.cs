@@ -31,7 +31,6 @@ namespace ksssssssss
             for (int i = 0; i < Array_index_Control[0]; i++)
             {
                 flowLayoutPanel1.Controls.Add(classe.ArrayControl[i]);
-                //label1.Text += " " + classe.Random_Array[i];
             }
 
 
@@ -72,12 +71,13 @@ namespace ksssssssss
         }
         public string[] randomListe(string[] a)
         {
+            List<string> list_mot = new List<string>();
             for (int i=0; i<a.Length;i++)
             {
                 mindex = motaleatoire.Next(a.Length);
-                 a[i] =  a[mindex] ;
+                list_mot.Add(a[mindex]);
             }
-            return a;
+            return list_mot.ToArray();
 
         }
         
@@ -87,6 +87,7 @@ namespace ksssssssss
             string[] cas = randomListe(Array_mots);
             classe.Random_Array = cas;
             Array_Control();
+            classe.Arrayindexcontrol = Referrence_Array_Control(classe.ArrayControl);
             start();
             Label_timer.Text = time + " secondes";
             
@@ -219,6 +220,17 @@ namespace ksssssssss
 
         private void reset_Click(object sender, EventArgs e)
         {
+            //timer
+            time = 60;
+            timer1.Stop();
+            Label_timer.Text = time.ToString() + " secondes";
+            //board
+            flowLayoutPanel1.Controls.Clear();
+            Compteur = 0;
+            string[] cas = randomListe(Array_mots);
+            classe.Random_Array = cas;
+            Array_Control();
+            classe.Arrayindexcontrol = Referrence_Array_Control(classe.ArrayControl);
             start();
         }
 
@@ -263,7 +275,7 @@ namespace ksssssssss
             if (e.KeyCode.Equals(Keys.Space))
             {                                                            
                 int[] Array_index = Referrence_Array(classe.Random_Array);
-                int[] Array_index_Control = Referrence_Array_Control(classe.ArrayControl);
+                
 
 
                 if (Compteur< Array_mots.Length)
@@ -296,15 +308,15 @@ namespace ksssssssss
                     }
                     }
                     
-                    if (Array_index_Control.Contains(Compteur) == true)
+                    if (classe.Arrayindexcontrol.Contains(Compteur) == true)
                     {
                         
-                        int Index_ = Array.IndexOf(Array_index_Control, Compteur);
+                        int Index_ = Array.IndexOf(classe.Arrayindexcontrol, Compteur);
                         label1.ResetText();
                         flowLayoutPanel1.Controls.Clear();
-                        if (Index_ != (Array_index_Control.Length) - 1)
+                        if (Index_ != (classe.Arrayindexcontrol.Length) - 1)
                         {
-                            for (int i = Array_index_Control[Index_]; i < Array_index_Control[Index_ + 1]; i++)
+                            for (int i = classe.Arrayindexcontrol[Index_]; i < classe.Arrayindexcontrol[Index_ + 1]; i++)
                             {
                                 flowLayoutPanel1.Controls.Add(classe.ArrayControl[i]);
                                 
@@ -312,7 +324,7 @@ namespace ksssssssss
                         }
                         else
                         {
-                            for (int i = Array_index_Control[Index_]; i < classe.Random_Array.Length; i++)
+                            for (int i = classe.Arrayindexcontrol[Index_]; i < classe.Random_Array.Length; i++)
                             {
                                 flowLayoutPanel1.Controls.Add(classe.ArrayControl[i]);
                                 

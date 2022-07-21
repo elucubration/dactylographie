@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,7 +16,7 @@ namespace ksssssssss
         private string[] Array_Changement;
         private Control[] Array_Control;
         private int var_=0;
-        
+        private int[] Array_index_control;
         public int var
         {
             get
@@ -38,6 +39,15 @@ namespace ksssssssss
             set
             {
                 Array_Control = value;           }
+        }
+        public int[] Arrayindexcontrol
+        {
+            get {
+                return Array_index_control;
+            }
+            set {
+                Array_index_control = value;
+            }
         }
         public int index 
         {
@@ -97,5 +107,18 @@ namespace ksssssssss
 
         
         
+    }
+    public static class Rndf
+    {
+        
+        private static readonly Random random = new Random();
+        private static readonly object syncLock = new object();
+        public static int RandomNumber( int max)
+        {
+            lock (syncLock)
+            { // synchronize
+                return random.Next( max);
+            }
+        }
     }
 }

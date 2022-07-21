@@ -38,6 +38,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.reset = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox1
@@ -109,19 +110,27 @@
             // 
             // reset
             // 
-            this.reset.Location = new System.Drawing.Point(323, 57);
+            this.reset.Location = new System.Drawing.Point(288, 45);
             this.reset.Name = "reset";
-            this.reset.Size = new System.Drawing.Size(75, 23);
+            this.reset.Size = new System.Drawing.Size(159, 83);
             this.reset.TabIndex = 8;
             this.reset.Text = "reset";
             this.reset.UseVisualStyleBackColor = true;
             this.reset.Click += new System.EventHandler(this.reset_Click);
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(72, 43);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(85, 56);
+            this.label5.TabIndex = 9;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.reset);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.label2);
@@ -148,6 +157,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button reset;
+        private System.Windows.Forms.Label label5;
     }
 }
 
